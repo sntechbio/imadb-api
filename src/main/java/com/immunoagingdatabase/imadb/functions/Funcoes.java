@@ -34,7 +34,4 @@ public class Funcoes {
         return addNamesToMatrix(objMatrix, rowNames, colNames);
     }
 
-    public static List<CSVRecord> removeFirstLineCsvParser(CSVParser parser) throws IOException {
-        return Collections.singletonList(parser.getRecords().remove(0));
-    }
 }

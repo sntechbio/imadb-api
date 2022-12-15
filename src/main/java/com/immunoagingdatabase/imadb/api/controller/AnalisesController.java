@@ -27,9 +27,7 @@ public class AnalisesController {
     @PostMapping("/correlacao")
     public Object[][] uploadAndAnaliseDeCorrelacao(@RequestParam(value = "file")MultipartFile file) throws IOException {
         InputStreamReader reader = new InputStreamReader(file.getInputStream());
-        double[][] corr = analiseService.calcularCorrelacoes(reader);
-        List<String> namesVariables = analiseService.coletarNomeDeVariaveis(reader);
-        return Funcoes.montarMatrizDeCorrelacoes(corr, namesVariables, namesVariables);
+        return analiseService.calcularCorrelacoes(reader);
     }
 
 }

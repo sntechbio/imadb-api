@@ -15,10 +15,10 @@ public class Funcoes {
 
     public static Object[][] addNamesToMatrix(Object[][] matrix, List<String> rowNames, List<String> colNames) {
         matrix[0][0] = "";
-        for (int i = 0; i < rowNames.size(); i++) {
+        for (int i = 0; i < rowNames.size() - 1; i++) {
             matrix[i+1][0] = rowNames.get(i);
         }
-        for (int j = 0; j < colNames.size(); j++) {
+        for (int j = 0; j < colNames.size() - 1; j++) {
             matrix[0][j+1] = colNames.get(j);
         }
         return matrix;

@@ -1,5 +1,6 @@
 package com.immunoagingdatabase.imadb.domain.service;
 
+import com.immunoagingdatabase.imadb.functions.Funcoes;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
@@ -13,9 +14,10 @@ import java.util.List;
 @Service
 public class AnaliseService {
 
-    public double[][] calcularCorrelacoes(InputStreamReader inputStreamReader) throws IOException {
+    public Object[][] calcularCorrelacoes(InputStreamReader inputStreamReader) throws IOException {
         CSVParser parser = new CSVParser(inputStreamReader, CSVFormat.DEFAULT);
         List<CSVRecord> linhas = parser.getRecords();
+        List<String> nomesDasVariaveis = linhas.get(0).toList();
         linhas.remove(0);
         int colunas = linhas.get(0).size();
         double[][] matriz = new double[linhas.size()][colunas];
@@ -28,13 +30,8 @@ public class AnaliseService {
         }
 
         PearsonsCorrelation correlacao = new PearsonsCorrelation();
-        return correlacao.computeCorrelationMatrix(matriz).getData();
-    }
-
-    public List<String> coletarNomeDeVariaveis(InputStreamReader inputStreamReader) throws IOException {
-        CSVParser parser = new CSVParser(inputStreamReader, CSVFormat.DEFAULT);
-        List<CSVRecord> lines = parser.getRecords();
-        return lines.get(0).toList();
+        double[][] matrizDeCorrelacoes = correlacao.computeCorrelationMatrix(matriz).getData();
+        return Funcoes.montarMatrizDeCorrelacoes(matrizDeCorrelacoes, nomesDasVariaveis, nomesDasVariaveis);
     }
 
 }

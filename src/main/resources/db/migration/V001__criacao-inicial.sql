@@ -1,0 +1,16 @@
+CREATE TABLE `PatientInformationCvd` (
+    `id` int(11) NOT NULL,
+    `name` varchar(50) DEFAULT NULL,
+    `age` int(11) DEFAULT NULL,
+    `sex` varchar(45) DEFAULT NULL,
+    `birth_date` varchar(45) DEFAULT NULL,
+    `cpf` varchar(45) DEFAULT NULL,
+    `professsion` varchar(100) DEFAULT NULL,
+    `schooling` varchar(45) DEFAULT NULL,
+    `adress` varchar(130) DEFAULT NULL,
+    `income` varchar(45) DEFAULT NULL,
+    `marital_status` varchar(45) DEFAULT NULL,
+    `imc` double DEFAULT NULL,
+    `group` varchar(45) DEFAULT NULL,
+    `vaccination` varchar(70) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

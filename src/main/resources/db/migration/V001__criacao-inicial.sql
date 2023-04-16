@@ -75,8 +75,3 @@ INSERT INTO `ethnicity` (`group`) VALUES ('Branca'), ('Parda'), ('Preta'), ('Ama
 INSERT INTO `frequency_food_consumption` (`frequency`) VALUES ('Todo dia'), ('5 a 6x na semana'), ('1 a 4x na semana'),
                                                             ('1 a 3x ao mês'), ('Não consome');
 INSERT INTO `nutricional_data` (`nutricional_group`) VALUES ('Eutrófico'), ('Sobrepeso'), ('Obesidade'), ('Abaixo do peso');
-
-alter table `patient_information_cvd`
-drop column `name`,
-drop column `birth_date`,
-drop column `cpf`;

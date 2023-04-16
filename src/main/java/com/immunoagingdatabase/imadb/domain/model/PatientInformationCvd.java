@@ -15,20 +15,16 @@ public class PatientInformationCvd {
     @EqualsAndHashCode.Include
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idPatientInformation;
-
-    private String name;
+    private Integer id;
     private Integer age;
     private String sex;
-    private String birthDate;
-    private String cpf;
     private String profession;
     private String schooling;
     private String address;
     private String income;
     private String maritalStatus;
     private Double imc;
-    private String group;
+    private String classification;
     private String vaccination;
 
 }

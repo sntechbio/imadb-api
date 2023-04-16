@@ -1,11 +1,10 @@
 package com.immunoagingdatabase.imadb.api.controller;
 
+import com.immunoagingdatabase.imadb.domain.model.CytokinesCovid;
+import com.immunoagingdatabase.imadb.domain.repository.CytokinesCvdRepository;
 import com.immunoagingdatabase.imadb.domain.service.AnaliseService;
 import com.immunoagingdatabase.imadb.functions.Funcoes;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -19,8 +18,11 @@ public class AnalisesController {
 
     private final AnaliseService analiseService;
 
-    public AnalisesController(AnaliseService analiseService) {
+    private final CytokinesCvdRepository cytokinesCvdRepository;
+
+    public AnalisesController(AnaliseService analiseService, CytokinesCvdRepository cytokinesCvdRepository) {
         this.analiseService = analiseService;
+        this.cytokinesCvdRepository = cytokinesCvdRepository;
     }
 
     @PostMapping("/correlacao")
@@ -30,4 +32,9 @@ public class AnalisesController {
         return Funcoes.convertObjectToModel(correlacoes);
     }
 
+    @GetMapping("/search-cytokines-by-classification")
+    public List<CytokinesCovid> buscarCitocinasPorGrupo(@RequestParam(value = "classification") String classification) {
+        List<CytokinesCovid> citocinasFilter = cytokinesCvdRepository.findCytokinesByPatientGroup(classification);
+        return citocinasFilter;
+    }
 }

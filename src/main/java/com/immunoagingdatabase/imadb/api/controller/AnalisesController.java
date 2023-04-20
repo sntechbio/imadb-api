@@ -1,5 +1,6 @@
 package com.immunoagingdatabase.imadb.api.controller;
 
+import com.immunoagingdatabase.imadb.domain.model.Classification;
 import com.immunoagingdatabase.imadb.domain.model.CytokinesCovid;
 import com.immunoagingdatabase.imadb.domain.repository.CytokinesCvdRepository;
 import com.immunoagingdatabase.imadb.domain.service.AnaliseService;
@@ -33,8 +34,8 @@ public class AnalisesController {
     }
 
     @GetMapping("/search-cytokines-by-classification")
-    public List<CytokinesCovid> buscarCitocinasPorGrupo(@RequestParam(value = "classification") String classification) {
-        List<CytokinesCovid> citocinasFilter = cytokinesCvdRepository.findCytokinesByPatientGroup(classification);
+    public List<CytokinesCovid> buscarCitocinasPorGrupo(@RequestParam(value = "classification") Classification classification) {
+        List<CytokinesCovid> citocinasFilter = cytokinesCvdRepository.findCytokinesByPatientGroup(classification.getLabel());
         return citocinasFilter;
     }
 }
